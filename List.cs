@@ -132,15 +132,8 @@ namespace Homework12
         public void Add(T target, T x) => InsertAt(IndexOf(target), x);
 
         public void AddAfter(T target, T x) => InsertAt(IndexOf(target) + 1, x);
-
-        public void RemoveFirst() => RemoveAt(0);
-
-        public void RemoveLast() => RemoveAt(Count - 1);
-
-        public void RemoveBefore(T x) => RemoveAt(IndexOf(x) - 1);
-
+      
         public void Remove(T x) => RemoveAt(IndexOf(x));
 
-        public void RemoveAfter(T x) => RemoveAt(IndexOf(x) + 1);
     }
 }
