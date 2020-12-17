@@ -15,7 +15,7 @@ namespace Homework12
             Console.WriteLine(lis.Print("Test:"));
 
             Random rnd = new Random();
-            lis.Add(rnd.Next(1, 10000));
+            lis.Add(rnd.Next(1, 100));
             
             lis.Add(56);
 
