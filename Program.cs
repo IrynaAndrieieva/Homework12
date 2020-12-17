@@ -11,17 +11,15 @@ namespace Homework12
         static void Main(string[] args)
         {
             List lis = new List(3);
-           
+
             Console.WriteLine(lis.Print("Test:"));
 
-            Random r = new Random();
+            Random rnd = new Random();
+            lis.Add(rnd.Next(1, 10000));
+            
+            lis.Add(56);
 
-            for (int i = 0; i < 30; i++)
-            {
-                lis.Add(r.Next(100));
-            }
-
-            lis.Add(11235813);
+            lis.Sort();
 
             Console.WriteLine(lis.Print());
 

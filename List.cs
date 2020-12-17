@@ -48,5 +48,30 @@ namespace Homework12
         }
 
         public int Count { get { return this.index; } }
+
+        public void Sort()
+        {
+            int temp;
+            for (int i = 0; i < data.Length - 1; i++)
+            {
+                for (int j = i + 1; j < data.Length; j++)
+                {
+                    if (data[i] > data[j])
+                    {
+                        temp = data[i];
+                        data[i] = data[j];
+                        data[j] = temp;
+                    }
+                }
+            }
+          
+            Console.WriteLine("Make Sort");
+            for (int i = 0; i < data.Length; i++)
+            {
+                Console.WriteLine(data[i]);
+            }
+            Console.ReadLine();
+        }
     }
 }
+
