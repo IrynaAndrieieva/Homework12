@@ -6,134 +6,47 @@ using System.Threading.Tasks;
 
 namespace Homework12
 {
-    public class List<T> : IPrintable, ICloneableAs<List<T>>
+    struct List
     {
-        private T[] source;
+        private int[] data;
+        private int index;
 
-        private void ThrowIfInvalid(int index)
+        public List(int SizeArray)
         {
-            if ((index < 0) || (index >= Count))
-            {
-                throw new IndexOutOfRangeException(nameof(index));
-            }
+            this.data = new int[SizeArray];
+            this.index = 0;
         }
 
-        private void TryResize()
+        public void Add(int Element)
         {
-            Count++;
-            if (source.Length < Count)
+            if (index >= this.data.Length)
             {
-                Array.Resize(ref source, source.Length == 0 ? 1 : source.Length * 2);
+                Array.Resize(ref this.data, this.data.Length * 3 / 2); //100 >> 150 >> 225 >> 337 >> 505 и т.д. 
             }
+            this.data[index++] = Element;
+        }
+        public void RemoveAt(int Position)
+        {
+            for (int i = Position; i < this.index; i++)
+            {
+                this.data[i] = this.data[i + 1];
+            }
+            this.index--;
         }
 
-        private void Insert(int index, T x)
+        public string Print(string Text = "")
         {
-            TryResize();
-            for (var i = Count - 1; i > index; i--)
-            {
-                source[i] = source[i - 1];
-            }
-            source[index] = x;
+            string output = string.Empty;
+            for (int i = 0; i < this.index; i++) output += $"{this.data[i]} ";
+            return $"{Text} {output}".Trim();
         }
 
-        public T this[int i]
+        public int this[int i]
         {
-            get
-            {
-                ThrowIfInvalid(i);
-                return source[i];
-            }
-            set
-            {
-                ThrowIfInvalid(i);
-                source[i] = value;
-            }
+            get { return this.data[i]; }
+            set { this.data[i] = value; }
         }
 
-        public int Capacity => source.Length;
-        public int Count { get; private set; }
-
-        public List()
-        {
-            source = new T[1];
-        }
-
-        public string GetStringRepresentation()
-        {
-            string representation = "[";
-            for (var i = 0; i < Count; i++)
-            {
-                representation += source[i].ToString();
-                if (i < Count - 1)
-                {
-                    representation += ", ";
-                }
-            }
-            representation += "]";
-            return representation;
-        }
-
-        public void Print() => Console.Write(GetStringRepresentation());
-
-        public void Println() => Console.WriteLine(GetStringRepresentation());
-
-        public List<T> CloneAs()
-        {
-            List<T> list = new List<T>();
-            for (var i = 0; i < Count; i++)
-            {
-                list.AddLast(source[i]);
-            }
-            return list;
-        }
-
-        public object Clone() => CloneAs();
-
-        public void TrimExcess() => Array.Resize(ref source, Count);
-
-        public int IndexOf(T x)
-        {
-            int i = 0;
-            while ((i < Count) && (!source[i].Equals(x)))
-            {
-                i++;
-            }
-            if (i == Count)
-            {
-                return -1;
-            }
-            return i;
-        }
-
-        public void InsertAt(int index, T x)
-        {
-            ThrowIfInvalid(index);
-            Insert(index, x);
-        }
-
-        public void RemoveAt(int index)
-        {
-            ThrowIfInvalid(index);
-            for (var i = index; i < Count - 1; i++)
-            {
-                source[i] = source[i + 1];
-            }
-            source[Count - 1] = default(T);
-            Count--;
-        }
-
-        public void AddFirst(T x) => Insert(0, x);
-
-        public void AddLast(T x) => Insert(Count, x);
-
-        public void AddBefore(T target, T x) => InsertAt(IndexOf(target) - 1, x);
-
-        public void Add(T target, T x) => InsertAt(IndexOf(target), x);
-
-        public void AddAfter(T target, T x) => InsertAt(IndexOf(target) + 1, x);
-      
-        public void Remove(T x) => RemoveAt(IndexOf(x));
-
+        public int Count { get { return this.index; } }
     }
 }
