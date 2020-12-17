@@ -11,16 +11,8 @@ namespace Homework12
         static void Main(string[] args)
         {
             List lis = new List(3);
-
-            Console.WriteLine(lis.Print("Test 1:"));
-
-            lis.Add(1);
-
-            Console.WriteLine(lis.Print("Test 2:"));
-
-            lis.Add(2);
-            lis.Add(3);
-            Console.WriteLine(lis.Print("Test 3:"));
+           
+            Console.WriteLine(lis.Print("Test:"));
 
             Random r = new Random();
 
@@ -28,8 +20,6 @@ namespace Homework12
             {
                 lis.Add(r.Next(100));
             }
-
-            Console.WriteLine(lis.Print("Test 4:"));
 
             lis.Add(11235813);
 

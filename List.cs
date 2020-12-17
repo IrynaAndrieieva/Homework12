@@ -11,9 +11,9 @@ namespace Homework12
         private int[] data;
         private int index;
 
-        public List(int SizeArray)
+        public List(int SizeList)
         {
-            this.data = new int[SizeArray];
+            this.data = new int[SizeList];
             this.index = 0;
         }
 
