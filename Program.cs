@@ -10,6 +10,20 @@ namespace Homework12
     {
         static void Main(string[] args)
         {
+            List lis = new List(3);
+
+            Console.WriteLine(lis.Print("Test:"));
+
+            Random rnd = new Random();
+            lis.Add(rnd.Next(1, 100));
+            
+            lis.Add(56);
+
+            lis.Sort();
+
+            Console.WriteLine(lis.Print());
+
+            Console.ReadKey();
         }
     }
 }
