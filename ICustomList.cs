@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 
 namespace Homework12
 {
@@ -6,7 +6,7 @@ namespace Homework12
     {
         void Add(T item);
 
-        void AddRange(ICollection collection);
+        void AddRange(ICollection<T> collection);
 
         int IndexOf(T item);
 
