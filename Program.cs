@@ -11,24 +11,16 @@ namespace Homework12
         static void Main(string[] args)
         {
             CustomList<int> customList = new CustomList<int>();
-            Console.WriteLine($"CustomList Length: {customList.Length}");
-            customList.Add(1);
-            customList.Add(3);
-            customList.Add(3333);
-            customList.Add(-444);
-            customList.Add(444);
-            customList.Add(1);
-            Console.WriteLine($"CustomList Length(6): {customList.Length}");
-            customList.Add(3333);
-            customList.Add(-444);
-            customList.Add(444);
-            customList.Add(1);
-            Console.WriteLine($"CustomList Length(10): {customList.Length}");
-            customList.Add(3333);
-            customList.Add(-444);
-            customList.Add(444);
-            customList.Add(1);
-            Console.WriteLine($"CustomList Length(14): {customList.Length}");
+            Console.WriteLine($"CustomList Length: {customList.Count}");
+            List<int> listToAdd = new List<int>();
+            for(int i = 0; i < 7; i++)
+            {
+                listToAdd.Add(i);
+            }
+            customList.AddRange(listToAdd);
+            Console.WriteLine($"CustomList Length(8): {customList.Count}");
+            customList.AddRange(listToAdd);
+            Console.WriteLine($"CustomList Length(16): {customList.Count}");
 
             Console.ReadKey();
         }
