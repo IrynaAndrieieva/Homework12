@@ -10,19 +10,25 @@ namespace Homework12
     {
         static void Main(string[] args)
         {
-            List<int> temp = new List<int>();
-            List lis = new List(3);
-
-            Console.WriteLine(lis.Print("Test:"));
-
-            Random rnd = new Random();
-            lis.Add(rnd.Next(1, 100));
-            
-            lis.Add(56);
-
-            lis.Sort();
-
-            Console.WriteLine(lis.Print());
+            CustomList<int> customList = new CustomList<int>();
+            Console.WriteLine($"CustomList Length: {customList.Length}");
+            customList.Add(1);
+            customList.Add(3);
+            customList.Add(3333);
+            customList.Add(-444);
+            customList.Add(444);
+            customList.Add(1);
+            Console.WriteLine($"CustomList Length(6): {customList.Length}");
+            customList.Add(3333);
+            customList.Add(-444);
+            customList.Add(444);
+            customList.Add(1);
+            Console.WriteLine($"CustomList Length(10): {customList.Length}");
+            customList.Add(3333);
+            customList.Add(-444);
+            customList.Add(444);
+            customList.Add(1);
+            Console.WriteLine($"CustomList Length(14): {customList.Length}");
 
             Console.ReadKey();
         }
