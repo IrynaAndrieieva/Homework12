@@ -74,7 +74,18 @@ namespace Homework12
 
         public bool Remove(T item)
         {
-            throw new NotImplementedException();
+            var index = this.IndexOf(item);
+            if (index == -1)
+            {
+                return false;
+            }
+            for (int i = index + 1; i < this.Count; i++)
+            {
+                this.Data[i - 1] = this.Data[i];
+                this.Data[i] = default;
+            }
+            this.Count--;
+            return true;
         }
 
         public void RemoveAt(int index)
