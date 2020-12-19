@@ -2,7 +2,7 @@
 
 namespace Homework12
 {
-    public interface ICastomList<T>
+    public interface ICustomList<T>
     {
         void Add(T item);
 
