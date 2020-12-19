@@ -10,6 +10,7 @@ namespace Homework12
     {
         static void Main(string[] args)
         {
+            List<int> temp = new List<int>();
             List lis = new List(3);
 
             Console.WriteLine(lis.Print("Test:"));
