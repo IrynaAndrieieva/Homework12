@@ -79,18 +79,22 @@ namespace Homework12
             {
                 return false;
             }
+            this.RemoveAt(index); // dry
+            return true;
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (index < 0 || index >= this.Count)
+            {
+                return;
+            }
             for (int i = index + 1; i < this.Count; i++)
             {
                 this.Data[i - 1] = this.Data[i];
                 this.Data[i] = default;
             }
             this.Count--;
-            return true;
-        }
-
-        public void RemoveAt(int index)
-        {
-            throw new NotImplementedException();
         }
         public void Print()
         {
@@ -100,7 +104,7 @@ namespace Homework12
             {
                 Console.Write($"{this.Data[i]} ");
             }
-            Console.WriteLine("\n");
+            Console.Write("\n");
 
         }
         public void Sort()

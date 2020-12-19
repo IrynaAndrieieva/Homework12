@@ -63,6 +63,24 @@ namespace Homework12
             bool isRemoved2 = customList.Remove(-666);
             customList.Print();
 
+            // test remove at
+            listToAdd = new List<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                listToAdd.Add(i);
+            }
+            customList = new CustomList<int>();
+            customList.AddRange(listToAdd);
+            Console.WriteLine("Test RemoveAt:\n");
+            customList.Print();
+            customList.RemoveAt(0);
+            customList.Print();
+            customList.RemoveAt(8);
+            customList.Print();
+            customList.RemoveAt(666);
+            customList.Print();
+            customList.RemoveAt(-666);
+            customList.Print();
             Console.ReadKey();
         }
     }
