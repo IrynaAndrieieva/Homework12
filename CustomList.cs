@@ -51,12 +51,25 @@ namespace Homework12
 
         public int IndexOf(T item)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < this.Count; i++)
+            {
+                if (item.CompareTo(this.Data[i]) == 0)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            this.Resize(1);
+            for (int i = this.Count - 1; i >= index; i--)
+            {
+                this.Data[i + 1] = this.Data[i];
+            }
+            this.Data[index] = item;
+            this.Count++;
         }
 
         public bool Remove(T item)
