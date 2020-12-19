@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Homework12
 {
-    public class CustomList<T> : ICustomList<T> where T : IComparable
+    public class CustomList<T> : ICustomList<T>, IEnumerable<T> where T : IComparable
     {
         private T[] Data;
         public int Count { get; private set; }
@@ -121,6 +121,16 @@ namespace Homework12
                     }
                 }
             }
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return ((IEnumerable<T>)Data).GetEnumerator(); // реализовать свои методы
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Data.GetEnumerator(); // реализовать свои методы
         }
     }
 }
