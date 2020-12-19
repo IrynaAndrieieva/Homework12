@@ -10,17 +10,17 @@ namespace Homework12
     public class CustomList<T> : ICustomList<T>
     {
         private T[] Data;
-        public int Length { get; private set; }
+        public int Count { get; private set; }
         private int Capacity => Data.Length;
         public CustomList()
         {
             Data = new T[10];
-            Length = 0;
+            Count = 0;
         }
 
         private void Resize(int numberOfElements)
         {
-            int desiredCapacity = this.Length + numberOfElements;
+            int desiredCapacity = this.Count + numberOfElements;
             if (this.Capacity < desiredCapacity)
             {
                 var ourList = this.Data;
@@ -34,16 +34,19 @@ namespace Homework12
 
         public void Add(T item)
         {
-
             this.Resize(1);
-            this.Data[Length] = item;
-            this.Length++;
-
+            this.Data[Count] = item;
+            this.Count++;
         }
 
-        public void AddRange(ICollection collection)
+        public void AddRange(ICollection<T> collection)
         {
-            throw new NotImplementedException();
+            this.Resize(collection.Count);
+            foreach(var item in collection)
+            {
+                this.Data[Count] = item;
+                this.Count++;
+            }
         }
 
         public int IndexOf(T item)
