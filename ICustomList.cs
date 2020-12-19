@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Homework12
 {
-    public interface ICustomList<T>
+    public interface ICustomList<T> where T: IComparable
     {
         void Add(T item);
 

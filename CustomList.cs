@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Homework12
 {
-    public class CustomList<T> : ICustomList<T>
+    public class CustomList<T> : ICustomList<T> where T : IComparable
     {
         private T[] Data;
         public int Count { get; private set; }
@@ -42,7 +42,7 @@ namespace Homework12
         public void AddRange(ICollection<T> collection)
         {
             this.Resize(collection.Count);
-            foreach(var item in collection)
+            foreach (var item in collection)
             {
                 this.Data[Count] = item;
                 this.Count++;
@@ -68,10 +68,31 @@ namespace Homework12
         {
             throw new NotImplementedException();
         }
+        public void Print()
+        {
+            Console.WriteLine("Your custom list:");
 
+            for (int i = 0; i < this.Count; i++)
+            {
+                Console.Write($"{this.Data[i]} ");
+            }
+            Console.WriteLine("\n");
+
+        }
         public void Sort()
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < this.Data.Length - 1; i++)
+            {
+                for (int j = i + 1; j < this.Data.Length; j++)
+                {
+                    if (this.Data[i].CompareTo(this.Data[j]) == 1)
+                    {
+                        T temp = this.Data[i];
+                        this.Data[i] = this.Data[j];
+                        this.Data[j] = temp;
+                    }
+                }
+            }
         }
     }
 }

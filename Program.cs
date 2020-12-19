@@ -20,8 +20,11 @@ namespace Homework12
             customList.AddRange(listToAdd);
             Console.WriteLine($"CustomList Length(8): {customList.Count}");
             customList.AddRange(listToAdd);
+            customList.AddRange(listToAdd);
             Console.WriteLine($"CustomList Length(16): {customList.Count}");
-
+            customList.Print();
+            customList.Sort();
+            customList.Print();
             Console.ReadKey();
         }
     }
